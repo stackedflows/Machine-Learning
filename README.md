@@ -12,6 +12,14 @@ The learning session outputs an ONNX file that can be re-installed to build furt
 
 This model is very heavy, and the framework is not optimised at all.
 
+This tutorial is a good place to start 
+
+https://www.youtube.com/watch?v=1bn9Lx2DDa0&list=PL8fePt58xRPY1-pkhMPus3GlUGXNdqMH5&ab_channel=BotAcademy
+
 # Coding-and-Training-A-Basic-Chatbot-Python/Ananconda
 
-The relevant files here are 
+The relevant files here are main.py and intents.js
+
+This tutorial is a good place to start
+
+https://www.youtube.com/watch?v=wypVcNIH6D4&ab_channel=TechWithTim
