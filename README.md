@@ -1,4 +1,6 @@
-# Training-Machine-Learning-Agent
+# Training-Machine-Learning-Agent-Unity
+
+The relvant files here are Bizarre.cs and NeuralNet.ONNX
 
 Using PyTorch to build machine learning behaviours in unity, through a virtual environment.
 
@@ -10,4 +12,6 @@ The learning session outputs an ONNX file that can be re-installed to build furt
 
 This model is very heavy, and the framework is not optimised at all.
 
-I will learn to make my own Models with PyTorch, and then design a 2D game around it.
+#Coding-and-Training-A-Basic-Chatbot
+
+The relevant files here are 
