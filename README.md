@@ -18,7 +18,7 @@ https://www.youtube.com/watch?v=1bn9Lx2DDa0&list=PL8fePt58xRPY1-pkhMPus3GlUGXNdq
 
 # Coding-and-Training-A-Basic-Chatbot-Python/Ananconda
 
-The relevant files here are main.py and intents.js
+The relevant file here is train.py
 
 This tutorial is a good place to start
 
