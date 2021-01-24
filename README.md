@@ -23,3 +23,9 @@ The relevant file here is train.py
 This tutorial is a good place to start
 
 https://www.youtube.com/watch?v=wypVcNIH6D4&ab_channel=TechWithTim
+
+to train, on the command dialogue, its the ususal
+
+    python main.py
+
+and the output will be the normal data produced after atraining session is finished.
