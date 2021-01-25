@@ -15,17 +15,3 @@ This model is very heavy, and the framework is not optimised at all.
 This tutorial is a good place to start 
 
 https://www.youtube.com/watch?v=1bn9Lx2DDa0&list=PL8fePt58xRPY1-pkhMPus3GlUGXNdqMH5&ab_channel=BotAcademy
-
-# Coding-and-Training-A-Basic-Chatbot-Python/Ananconda
-
-The relevant file here is train.py
-
-This tutorial is a good place to start
-
-https://www.youtube.com/watch?v=wypVcNIH6D4&ab_channel=TechWithTim
-
-to train, on the command dialogue, its the ususal
-
-    python main.py
-
-and the output will be the normal data produced after atraining session is finished.
