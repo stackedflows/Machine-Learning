@@ -1,7 +1,6 @@
 #python perceptron.py
 import random
 import math
-import numpy as np
 
 input_data = [[0, 0, 1], [1, 1, 1], [1, 0, 1], [0, 1, 1]]
 
@@ -31,23 +30,26 @@ def forward_pass(inputs, weights):
         outputs_sum[i] = sigmoid(outputs_sum[i])
     return outputs_sum
 
-def backpropogate(forward_outputs, correct_outputs, weights):
+def backpropogate(inputs, forward_outputs, correct_outputs, weights):
     errors = []
     for i in range(len(forward_outputs)):
         errors.append(forward_outputs[i] - correct_outputs[i])
     adjustments = []
     for i in range(len(errors)):
         adjustments.append(errors[i] * ddx_sigmoid(forward_outputs[i]))
-    new_weights = []
+    new_weights = weights
     for i in range(len(weights)):
-        new_weights.append(weights[i] + adjustments[i])
+        new_weight_sum = 0
+        for ii in range(len(inputs)):
+            new_weight_sum += inputs[ii][i] * adjustments[i]
+        new_weights[i] += new_weight_sum
     return new_weights
 
-weights = 2 * np.random.random((3,1)) - 1
+for i in range(input_size):
+    weights.append(2 * random.random() - 1)
 
 for i in range(10000):
     forward_outputs = forward_pass(input_data, weights)
-    weights = backpropogate(forward_outputs, correct_outputs, weights)
+    weights = backpropogate(input_data, forward_outputs, correct_outputs, weights)
     if i % 1000 == 0:
         print(forward_outputs)
-
