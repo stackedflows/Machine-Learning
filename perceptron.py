@@ -31,7 +31,7 @@ def forward_pass(inputs, weights):
         outputs_sum[i] = sigmoid(outputs_sum[i])
     return outputs_sum
 
-def backpropogate(inputs, forward_outputs, correct_outputs, weights):
+def backpropogate(forward_outputs, correct_outputs, weights):
     errors = []
     for i in range(len(forward_outputs)):
         errors.append(forward_outputs[i] - correct_outputs[i])
@@ -40,14 +40,14 @@ def backpropogate(inputs, forward_outputs, correct_outputs, weights):
         adjustments.append(errors[i] * ddx_sigmoid(forward_outputs[i]))
     new_weights = []
     for i in range(len(weights)):
-        new_weights.append(1 * adjustments[i])
+        new_weights.append(weights[i] + adjustments[i])
     return new_weights
 
 weights = 2 * np.random.random((3,1)) - 1
 
 for i in range(10000):
     forward_outputs = forward_pass(input_data, weights)
-    weights = backpropogate(input_data, forward_outputs, correct_outputs, weights)
+    weights = backpropogate(forward_outputs, correct_outputs, weights)
     if i % 1000 == 0:
         print(forward_outputs)
-        
+
