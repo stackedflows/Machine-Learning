@@ -1,5 +1,9 @@
 # Single-Layer-Perceptron
 
+relevant files : 
+
+    perceptron.py
+
 A implimentation of a single layer perceptron that I developed recently as an intorduction to python development
 
 Recognises truth tables and makes predictions based on them
@@ -10,5 +14,6 @@ This is a sequence of steps from a recent learning session of 10000 iterations b
 
      [0, 1, 1, 0]
 
-# Multi Layer Perceptron
+# Multi-Layer-Perceptron
 
+...upcoming
