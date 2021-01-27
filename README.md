@@ -9,3 +9,6 @@ Recognises truth tables and makes predictions based on them
 This is a sequence of steps from a recent learning session of 10000 iterations based on the target:
 
      [0, 1, 1, 0]
+
+# Multi Layer Perceptron
+
