@@ -2,7 +2,6 @@
 
 #non-linear functions can be represented with muli layering of perceptrons 
 #the more layers/connection, the more fitted the data can become
-
 import random
 import math
 
@@ -49,35 +48,48 @@ class mlp:
         
         return
     
+    #defining the dot product on two vectors
     def dot(self, set_0, set_1):
         product = []
         for element in range(len(set_0)):
             product.append(set_0[element] * set_1[element])
         return product
     
+    #neuron activation function
     def sigmoid(self, x):
         return 1 / (1 + math.exp(-x))
     
-    def forward_propogate(self, inputs):
-        
-        #check to see if length is matching for all training data
-        check = 0
-        for i in range(len(inputs)):
-            if len(inputs[i]) != self.inputs:
-                check += 1
-        assert check == 0
-        
+    #method for passing new data through the network, in the form [x,y,z ...]
+    def forward_propogate_single(self, inputs):
         activations = inputs
+        for i in range(len(self.weight_matrix)):
+            print("break")
+            new_activations = []
+            for ii in range(len(self.weight_matrix[i])):
+                partitions_new_activations = []
+                for iii in range(len(self.weight_matrix[i][ii])):
+                    partitions_new_activations.append(activations[ii] * self.weight_matrix[i][ii][iii])
+                new_activations.append(partitions_new_activations)
+            dot_activations = []
+            for ii in range(len(new_activations) - 1):
+                dot_activations = self.dot(new_activations[ii], new_activations[ii + 1])
+            activations = dot_activations
+            for ii in range(len(activations)):
+                activations[ii] = self.sigmoid(activations[ii])
+            print(activations)
         
-        matrix_position = 0
-        #propogate inputs
-        for i in range(len(activations)):
-            activations = self.dot(self.weight_matrix[matrix_position][i], activations)
-            if i == len(activation) - 1:
-                matrix_position += 1
+    def forward_propogate(self, input_training):
+        size = len(input_training)
+        forward_output = []
+        for i in range(size):
+            forward_output.append(self.forward_propogate_single(input_training[i]))
+        print(forward_output)
+        return forward_output
             
+    #defining the derivative of the sigmoid        
     def ddx_sigmoid(self, x):
         return x * (1 - x)
     
-    def back_propogate(self):
+    #method for adjusting network based on forward activations
+    def back_propogate(self, correct_outputs):
         return 0
