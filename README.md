@@ -16,4 +16,8 @@ This is a sequence of steps from a recent learning session of 10000 iterations b
 
 # Multi-Layer-Perceptron
 
+relevent files:
+    
+    m_perceptron.py
+
 ... In development ...
