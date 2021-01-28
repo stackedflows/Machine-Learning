@@ -107,4 +107,4 @@ class mlp:
     
 #testing
 MLP = mlp() 
-test = MLP.back_propogate([[1, 1], [1, 1]], [[.5, .3], [.2, .2]])
+test = MLP.back_propogate([[.5, 1], [1, .5]], [[1, 1], [1, 1]])
