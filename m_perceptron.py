@@ -1,7 +1,6 @@
-#python m_perceptron.py
-
 #non-linear functions can be represented with muli layering of perceptrons 
 #the more layers/connection, the more fitted the data can become
+
 import random
 import math
 
@@ -59,11 +58,10 @@ class mlp:
     def sigmoid(self, x):
         return 1 / (1 + math.exp(-x))
     
-    #method for passing new data through the network, in the form [x,y,z ...]
+    #method for passing new datum through the network, in the form [x,y,z ...]
     def forward_propogate_single(self, inputs):
         activations = inputs
         for i in range(len(self.weight_matrix)):
-            print("break")
             new_activations = []
             for ii in range(len(self.weight_matrix[i])):
                 partitions_new_activations = []
@@ -76,8 +74,9 @@ class mlp:
             activations = dot_activations
             for ii in range(len(activations)):
                 activations[ii] = self.sigmoid(activations[ii])
-            print(activations)
-        
+        return activations
+    
+    #propogates all input data
     def forward_propogate(self, input_training):
         size = len(input_training)
         forward_output = []
@@ -93,3 +92,4 @@ class mlp:
     #method for adjusting network based on forward activations
     def back_propogate(self, correct_outputs):
         return 0
+
