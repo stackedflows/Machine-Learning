@@ -93,3 +93,7 @@ class mlp:
     def back_propogate(self, correct_outputs):
         return 0
 
+    
+#testing
+MLP = mlp() 
+test = MLP.forward_propogate([[.5, .3], [1, 2]])
