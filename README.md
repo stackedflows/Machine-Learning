@@ -21,3 +21,5 @@ relevent files:
     m_perceptron.py
 
 ... In development ...
+
+It will be a very generalised, far more powerful, version of the SLP previously developed
