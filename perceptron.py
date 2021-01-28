@@ -13,12 +13,14 @@ input_size = len(input_data[0])
 
 training_iterations = 1
 
+#sigmoid related activations/gradient functions
 def sigmoid(x):
     return 1 / (1 + math.exp(-x))
 
 def ddx_sigmoid(x):
     return x * (1 - x)
 
+#method that passes data through the neuron
 def forward_pass(inputs, weights):
     outputs_sum = []
     neuron_count = len(inputs[0])
@@ -31,6 +33,7 @@ def forward_pass(inputs, weights):
         outputs_sum[i] = sigmoid(outputs_sum[i])
     return outputs_sum
 
+#method that corrects based on forward pass outputs
 def backpropogate(inputs, forward_outputs, correct_outputs, weights):
     errors = []
     for i in range(len(forward_outputs)):
@@ -44,15 +47,18 @@ def backpropogate(inputs, forward_outputs, correct_outputs, weights):
             new_weights[i] += inputs[ii][i] * adjustments[ii]
     return new_weights
 
+#initialise weights
 for i in range(input_size):
     weights.append(2 * random.random() - 1)
 
 np.random.seed(1)
 
 weights = 2 * np.random.random((3,1)) - 1
-    
+
+#train model
 for _ in range(10000):
     forward_outputs = forward_pass(input_data, weights)
     weights = backpropogate(input_data, forward_outputs, correct_outputs, weights)
 
+#output
 print(forward_outputs)
