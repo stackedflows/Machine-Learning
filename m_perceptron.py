@@ -74,6 +74,7 @@ class mlp:
             activations = dot_activations
             for ii in range(len(activations)):
                 activations[ii] = self.sigmoid(activations[ii])
+                pass
         return activations
     
     #propogates all input data
@@ -89,11 +90,21 @@ class mlp:
     def ddx_sigmoid(self, x):
         return x * (1 - x)
     
-    #method for adjusting network based on forward activations
-    def back_propogate(self, correct_outputs):
-        return 0
+    #method for adjusting network based on forward outputs
+    def back_propogate(self, correct_outputs, input_training):
+        errors = []
+        forward_outputs = self.forward_propogate(input_training)
+        for i in range(len(forward_outputs)):
+            errors_i = []
+            forward_outputs_i = forward_outputs[i]
+            correct_outputs_i = correct_outputs[i]
+            for ii in range(len(forward_outputs[i])):
+                errors_i.append(forward_outputs_i[ii] - correct_outputs_i[ii])
+            errors.append(errors_i)
+        print(errors)
+            
 
     
 #testing
 MLP = mlp() 
-test = MLP.forward_propogate([[.5, .3], [1, 2]])
+test = MLP.back_propogate([[.5, .3], [1, 2]], [1, 1], [1, 1]])
