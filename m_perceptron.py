@@ -17,25 +17,34 @@ class mlp:
         
         #initialising inputs weight layers
         weight_layer_0 = []
-        for i in range(self.inputs * self.hidden_layers[0]):
-            random_weight = 2 * random.random() - 1
-            weight_layer_0.append(random_weight)
+        for i in range(self.inputs):
+            partition_0 = []
+            for ii in range(self.hidden_layers[0]):
+                random_weight = 2 * random.random() - 1
+                partition_0.append(1)
+            weight_layer_0.append(partition_0)
         self.weight_matrix.append(weight_layer_0)
         
-        #initialising hidden layers 
+        #initialising hidden layers
         if len(self.hidden_layers) > 1:
             for i in range(1, len(self.hidden_layers)):
                 weight_layer_i_hidden = []
-                for ii in range(self.hidden_layers[i - 1] * self.hidden_layers[i]):
-                    random_weight = 2 * random.random() - 1
-                    weight_layer_i_hidden.append(random_weight)
+                for ii in range(self.hidden_layers[i - 1]):
+                    partition_i = []
+                    for iii in range(self.hidden_layers[i]):
+                        random_weight = 2 * random.random() - 1
+                        partition_i.append(1)
+                    weight_layer_i_hidden.append(partition_i)
                 self.weight_matrix.append(weight_layer_i_hidden)
                 
         #initialising output weights layer
         weight_layer_last = []
-        for i in range(self.outputs * self.hidden_layers[len(self.hidden_layers) - 1]):
-            random_weight = 2 * random.random() - 1
-            weight_layer_last.append(random_weight)
+        for i in range(self.hidden_layers[len(self.hidden_layers) - 1]):
+            partition_last = []
+            for ii in range(self.outputs):
+                random_weight = 2 * random.random() - 1
+                partition_last.append(1)
+            weight_layer_last.append(partition_last)
         self.weight_matrix.append(weight_layer_last)
         
         return
@@ -60,10 +69,12 @@ class mlp:
         
         activations = inputs
         
-        #propogate inputs ## debug here ##
-        for i in range(len(self.weight_matrix)):
-            activations = self.dot(activations, self.weight_matrix[i])
-            
+        matrix_position = 0
+        #propogate inputs
+        for i in range(len(activations)):
+            activations = self.dot(self.weight_matrix[matrix_position][i], activations)
+            if i == len(activation) - 1:
+                matrix_position += 1
             
     def ddx_sigmoid(self, x):
         return x * (1 - x)
