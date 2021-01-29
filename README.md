@@ -1,6 +1,7 @@
-# Single-Layer-Perceptron
+NOTE: Libraries used will be limited to 'random' and 'math' for all but the most trivial purposes
 
-NOTE: Libraries used will be limited to 'random' and 'math'
+
+# Single-Layer-Perceptron
 
 relevant files : 
 
