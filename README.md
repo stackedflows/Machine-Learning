@@ -1,5 +1,7 @@
 # Single-Layer-Perceptron
 
+NOTE: Libraries used will be limited to 'random' and 'math'
+
 relevant files : 
 
     perceptron.py
@@ -22,4 +24,4 @@ relevent files:
 
 ... In development ...
 
-It will be a very generalised, far more powerful, version of the SLP previously developed
+It will be a very generalised, far more powerful, version of the SLP previously developed.
