@@ -11,7 +11,7 @@ class mlp:
         self.hidden_layers = h_layers
         self.outputs = outs
         
-        #to be constructed during the forward pass wil be structed as [[,], [,,], [,], [,,], [,]]
+        #to be constructed during the forward pass
         self.activations_matrix = []
         
         #to be constructed during the backpropogation
@@ -66,7 +66,7 @@ class mlp:
             derivatives_layer_last.append(d_partitions_last)
         self.weight_matrix.append(weight_layer_last)
         self.weight_derivatives.append(derivatives_layer_last)
-        
+
         return
     
     #defining the dot product on two vectors
@@ -102,34 +102,22 @@ class mlp:
         return activations
     
     #propogates all input data
-    def forward_propogate(self, input_training):
+    def forward_propogate_all(self, input_training):
         size = len(input_training)
         forward_output = []
         for i in range(size):
             forward_output.append(self.forward_propogate_single(input_training[i]))
-        print(forward_output)
         return forward_output
+    
+    #method for caluculationg errors
+    def error_calculation(self, correct_outputs, inputs):
+        errors = []
+        for i in range(len(correct_outputs)):
+            errors.append(correct_outputs[i] - inputs[i])
+        return errors
             
     #defining the derivative of the sigmoid        
     def ddx_sigmoid(self, x):
         return x * (1 - x)
     
-    #method for adjusting network based on forward outputs
-    def back_propogate(self, correct_outputs, input_training):
-        errors = []
-        forward_outputs = self.forward_propogate(input_training)
-        for i in range(len(forward_outputs)):
-            errors_i = []
-            forward_outputs_i = forward_outputs[i]
-            correct_outputs_i = correct_outputs[i]
-            for ii in range(len(forward_outputs[i])):
-                errors_i.append(forward_outputs_i[ii] - correct_outputs_i[ii])
-            errors.append(errors_i)
-        print(errors)
-        
-        
-        return
     
-    def gradient_descent(self, weight_matrix, learning_rate):
-        
-        return
