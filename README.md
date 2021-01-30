@@ -24,8 +24,11 @@ relevent files:
     m_perceptron.py
 
 
-It is a very generalised, version of the SLP previously developed, capable of constructing as many hidden layers as needed and training the newtork on as many inputs and target values as wanted.
+It is a very generalised version of the SLP previously developed, capable of constructing as many hidden layers as needed and training the newtork on as many inputs and target values as wanted.
 
+![2021-01-30 (2)](https://user-images.githubusercontent.com/73109076/106370704-7cf89280-6354-11eb-8925-6c8ca69f5941.png)
+
+In this simple example, we see that It has learned to average the inputs
 
 # Convolutional Neural Net : MNIST with Pytorch
 
