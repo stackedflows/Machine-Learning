@@ -28,7 +28,9 @@ It is a very generalised version of the SLP previously developed, capable of con
 
 ![2021-01-30 (2)](https://user-images.githubusercontent.com/73109076/106370704-7cf89280-6354-11eb-8925-6c8ca69f5941.png)
 
-In this simple example, we see that It has learned to average the inputs based on a 100 epoch training session and with a learning rate of 0.5
+In this simple example, we see that It has learned to average the inputs, since the network cannot think of another way to optimise the error minimisation.
+
+This is based on a 100 epoch training session and with a learning rate of 0.5.
 
 # Convolutional Neural Net : MNIST with Pytorch
 
