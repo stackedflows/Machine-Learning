@@ -1,8 +1,7 @@
 #non-linear functions can be represented with muli layering of perceptrons 
 #the more layers/connection, the more fitted the data can become
 
-import random
-import math
+import random, math, copy
 
 class mlp:
     def __init__(self, ins = 2, h_layers = [3, 2, 3], outs = 2):
@@ -90,7 +89,7 @@ class mlp:
         for i in range(0, len(self.weight_matrix)):
             weighted_layer = []
             for ii in range(len(self.weight_matrix[i])):
-                weighted = self.weight_matrix[i][ii]
+                weighted = copy.copy(self.weight_matrix[i][ii])
                 for iii in range(len(weighted)):
                     weighted[iii] = weighted[iii] * running_activations[i][ii]
                 weighted_layer.append(weighted)
@@ -103,6 +102,7 @@ class mlp:
                 pass
             running_activations.append(activations)
         self.activations_matrixes.append(running_activations)
+        print("forward pass activations", self.activations_matrixes)
         return 
     
     #propogates all input data
@@ -125,12 +125,13 @@ class mlp:
         return x * (1 - x)
     
     #method for feeding errors backward in network
-    def back_propogate_single(self, activations_matrix, weight_matrix, error):
-        
-        
-        #for layer in reversed(range(0, len(weight_matrix))):
-            #print(weight_matrix[layer])
-            
+    def back_propogate_single(self):
+        weight_matrix = self.weight_matrix
+        print("self", self.weight_matrix)
+        weight_derivative_matrix = []
+        for i in reversed(range(0, len(weight_matrix))):
+            pass
+        print("backward pass", weight_derivative_matrix)    
         return
     
     def back_propogate_all(self, output_training):
