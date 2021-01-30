@@ -1,5 +1,6 @@
 #non-linear functions can be represented with muli layering of perceptrons 
 #the more layers/connection, the more fitted the data can become
+
 import random
 import math
 
