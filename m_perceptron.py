@@ -4,7 +4,7 @@
 import random, math, copy
 
 class mlp:
-    def __init__(self, ins = 2, h_layers = [3, 2, 3], outs = 2):
+    def __init__(self, ins = 2, h_layers = [3, 2, 3], outs = 4):
         #constants defining the layers of the network
         self.inputs = ins
         self.hidden_layers = h_layers
@@ -65,9 +65,22 @@ class mlp:
         self.weight_matrix.append(weight_layer_last)
         self.weight_derivatives.append(derivatives_layer_last)
         
-        print("weight matrix", self.weight_matrix)
-        print("weight derivatives", self.weight_derivatives)
-        print("activations", self.activations_matrixes)
+        #here we initialise the inverse weight matrix in preparation for back-propogation 
+        self.inverse_weight_matrix = copy.copy(self.weight_matrix)
+        self.inverse_weight_matrix.reverse()
+        
+        inverse = []
+        for i in range(len(self.inverse_weight_matrix)):
+            cell_size_previous = len((self.inverse_weight_matrix[i]))
+            cell_size = len(self.inverse_weight_matrix[i][0])
+            new_cell = []
+            for ii in range(cell_size):
+                partition_0 = []
+                for iii in range(cell_size_previous):
+                    partition_0.append(self.inverse_weight_matrix[i][iii][ii])
+                new_cell.append(partition_0)
+            inverse.append(new_cell)
+        self.inverse_weight_matrix = inverse
         
         return
     
@@ -112,13 +125,6 @@ class mlp:
                 pass
             running_activations.append(activations)
         return running_activations
-
-    #method for caluculationg errors
-    def error_calculation(self, correct_outputs, outputs):
-        errors = []
-        for i in range(len(correct_outputs)):
-            errors.append(correct_outputs[i] - outputs[i])
-        return errors
             
     #defining the derivative of the sigmoid        
     def ddx_sigmoid(self, x):
@@ -126,23 +132,16 @@ class mlp:
     
     #method for feeding errors backward in network
     def back_propogate_single(self, activations, target):
-        weight_matrix = copy.copy(self.weight_matrix)
-        weight_matrix.reverse()
-        print("weights", weight_matrix)
-        activations_test = copy.copy(activations)
-        activations_test.reverse()
-        print("activations reverse test", activations_test)
-        errors = []
-        for i in range(len(target)):
-            errors.append(activations_test[0][i] - target[i])
-        print("initial errors", errors)
-        derivatives = []
-        for i in range(len(activations_test)):
-            current_derivative = []
-            for ii in range(len(activations_test[i])):
-                current_derivative.append(errors[ii] * self.ddx_sigmoid(activations_test[i][ii]))
-            derivatives.append(current_derivative)
-            for ii in range(len(current_derivative)):
-                errors[ii] = current_derivative[ii] * weight_matrix[ii][i][0]
-        print(derivatives)
-        return
+        reverse_activations = copy.copy(activations)
+        reverse_activations.reverse()
+        print("reverese activations", reverse_activations)
+        reversed_weight_matrix = copy.copy(self.inverse_weight_matrix)
+        print("inverse weights", reversed_weight_matrix)
+        current_errors = []
+        for i in range(len(reverse_activations) - 1):
+            derivatives = []
+            for ii in range(len(reverse_activations[i])):
+                derivatives.append(self.ddx_sigmoid(reverse_activations[i][ii]))
+            print(derivatives)
+            
+        return 
