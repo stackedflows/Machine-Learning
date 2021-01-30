@@ -26,3 +26,8 @@ relevent files:
 ... In development ...
 
 It will be a very generalised, far more powerful, version of the SLP previously developed.
+
+
+# Convolutional Neural Net : MNIST with Pytorch
+
+...
