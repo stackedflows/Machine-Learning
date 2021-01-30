@@ -23,9 +23,8 @@ relevent files:
     
     m_perceptron.py
 
-... In development ...
 
-It will be a very generalised, far more powerful, version of the SLP previously developed.
+It is a very generalised, version of the SLP previously developed, capable of constructing as many hidden layers as needed and training the newtork on as many inputs and target values as wanted.
 
 
 # Convolutional Neural Net : MNIST with Pytorch
