@@ -103,7 +103,6 @@ class mlp:
                 pass
             running_activations.append(activations)
         self.activations_matrixes.append(running_activations)
-        print("forward pass activations", self.activations_matrixes)
         return 
     
     #propogates all input data
@@ -111,6 +110,7 @@ class mlp:
         size = len(input_training)
         for i in range(size):
             self.forward_propogate_single(input_training[i])
+        print("forward pass activations", self.activations_matrixes)
         return 
     
     #method for caluculationg errors
