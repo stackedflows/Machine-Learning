@@ -127,15 +127,22 @@ class mlp:
     #method for feeding errors backward in network
     def back_propogate_single(self, activations, target):
         weight_matrix = copy.copy(self.weight_matrix)
+        weight_matrix.reverse()
         print("weights", weight_matrix)
         activations_test = copy.copy(activations)
-        print("activations", activations_test)
-        weight_derivative_matrix = []
         activations_test.reverse()
+        print("activations reverse test", activations_test)
         errors = []
         for i in range(len(target)):
             errors.append(activations_test[0][i] - target[i])
-        print("activations rev", activations_test)
         print("initial errors", errors)
-        
+        derivatives = []
+        for i in range(len(activations_test)):
+            current_derivative = []
+            for ii in range(len(activations_test[i])):
+                current_derivative.append(errors[ii] * self.ddx_sigmoid(activations_test[i][ii]))
+            derivatives.append(current_derivative)
+            for ii in range(len(current_derivative)):
+                errors[ii] = current_derivative[ii] * weight_matrix[ii][i][0]
+        print(derivatives)
         return
