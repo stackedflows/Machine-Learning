@@ -25,8 +25,8 @@ class mlp:
             partition_0 = []
             d_partitions_0 = []
             for ii in range(self.hidden_layers[0]):
-                #to be used after testing: random_weight = 2 * random.random() - 1
-                partition_0.append(1)
+                random_weight = 2 * random.random() - 1
+                partition_0.append(random_weight)
                 d_partitions_0.append(0)
             weight_layer_0.append(partition_0)
             derivatives_0.append(d_partitions_0)
@@ -42,8 +42,8 @@ class mlp:
                     partition_i = []
                     d_partitions_i = []
                     for iii in range(self.hidden_layers[i]):
-                        #to be used after testing: random_weight = 2 * random.random() - 1
-                        partition_i.append(1)
+                        random_weight = 2 * random.random() - 1
+                        partition_i.append(random_weight)
                         d_partitions_i.append(0)
                     weight_layer_i_hidden.append(partition_i)
                     derivatives_layer_i_hidden.append(d_partitions_i)
@@ -57,8 +57,8 @@ class mlp:
             partition_last = []
             d_partitions_last = []
             for ii in range(self.outputs):
-                #to be used after testing: random_weight = 2 * random.random() - 1
-                partition_last.append(1)
+                random_weight = 2 * random.random() - 1
+                partition_last.append(random_weight)
                 d_partitions_last.append(0)
             weight_layer_last.append(partition_last)
             derivatives_layer_last.append(d_partitions_last)
@@ -81,15 +81,7 @@ class mlp:
                 new_cell.append(partition_0)
             inverse.append(new_cell)
         self.inverse_weight_matrix = inverse
-        
         return
-    
-    #defining the dot product on two vectors
-    def dot(self, set_0, set_1):
-        product = []
-        for element in range(len(set_0)):
-            product.append(set_0[element] * set_1[element])
-        return product
     
     #method to add position-wise elements in a tensor
     def add(self, set_0):
@@ -121,8 +113,7 @@ class mlp:
                 dot_prod = self.add(weighted_layer)
             activations = dot_prod
             for ii in range(len(activations)):
-                #activations[ii] = self.sigmoid(activations[ii])
-                pass
+                activations[ii] = self.sigmoid(activations[ii])
             running_activations.append(activations)
         return running_activations
             
@@ -134,14 +125,50 @@ class mlp:
     def back_propogate_single(self, activations, target):
         reverse_activations = copy.copy(activations)
         reverse_activations.reverse()
-        print("reverese activations", reverse_activations)
         reversed_weight_matrix = copy.copy(self.inverse_weight_matrix)
-        print("inverse weights", reversed_weight_matrix)
-        current_errors = []
+        errors = []
+        #initial errors
+        for i in range(len(target)):
+            errors.append(target[i] - reverse_activations[0][i])
+        derivatives_matrix = []
+        errors_matrix = []
+        #backpropogation algorithm
         for i in range(len(reverse_activations) - 1):
             derivatives = []
+            #errors * sigmoid derivative (activations)
             for ii in range(len(reverse_activations[i])):
-                derivatives.append(self.ddx_sigmoid(reverse_activations[i][ii]))
-            print(derivatives)
-            
-        return 
+                derivatives.append(errors[ii] * self.ddx_sigmoid(reverse_activations[i][ii]))
+            dot_prod = []
+            #propogate the errors into the next layer
+            for ii in range(len(reversed_weight_matrix[i])):
+                partition_1 = []
+                for iii in range(len(reversed_weight_matrix[i][ii])):
+                    partition_1.append(reversed_weight_matrix[i][ii][iii] * derivatives[ii])
+                dot_prod.append(partition_1)
+            derivatives_matrix.append(dot_prod)
+            errors = self.add(dot_prod)
+        return derivatives_matrix
+    
+    #updates weights based on back propgation single
+    def gradient_descent_single(self, learning_rate, activations, target):
+        #adjust weights
+        weights = copy.copy(self.inverse_weight_matrix)
+        derivatives = self.back_propogate_single(activations, target)
+        for i in range(len(weights)):
+            for ii in range(len(weights[i])):
+                for iii in range(len(weights[i][ii])):
+                    weights[i][ii][iii] += derivatives[i][ii][iii] * learning_rate
+        weights_new = []
+        #return matrix to non-inverse form
+        for i in range(len(weights)):
+            partition_0 = []
+            this_cell_size = len(weights[i])
+            cell_size = len(weights[i][0])
+            weights_normal = []
+            for j in range(cell_size):
+                partition_1 = []
+                for ii in range(this_cell_size):
+                    partition_1.append(weights[i][ii][j])
+                weights_normal.append(partition_1)
+            weights_new.append(weights_normal)
+        return weights_new
