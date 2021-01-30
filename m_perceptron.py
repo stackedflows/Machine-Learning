@@ -176,6 +176,7 @@ class mlp:
         self.weight_matrix.reverse()
         return 
     
+    #trains network
     def train(self, inputs, targets, epochs, rate):
         for i in range(epochs):
             for ii in range(len(inputs)):
