@@ -34,4 +34,10 @@ This is based on a 100 epoch training session and with a learning rate of 0.5.
 
 # Convolutional Neural Net : MNIST with Pytorch
 
+    relevent files: TorchMNIST.py
+ 
+Builing a convolutional Neural Net In order to impliment MNIST classification.
+
+More details at this link: http://yann.lecun.com/exdb/mnist/
+
 ...
