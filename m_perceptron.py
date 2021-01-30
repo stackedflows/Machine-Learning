@@ -78,6 +78,7 @@ class mlp:
             product.append(set_0[element] * set_1[element])
         return product
     
+    #method to add position-wise elements in a tensor
     def add(self, set_0):
         sums = []
         for i in range(len(set_0[0])):
@@ -110,8 +111,6 @@ class mlp:
                 #activations[ii] = self.sigmoid(activations[ii])
                 pass
             running_activations.append(activations)
-        #print("forward pass activations", running_activations)
-        print(running_activations)
         return running_activations
 
     #method for caluculationg errors
@@ -126,13 +125,17 @@ class mlp:
         return x * (1 - x)
     
     #method for feeding errors backward in network
-    def back_propogate_single(self, activations):
+    def back_propogate_single(self, activations, target):
         weight_matrix = copy.copy(self.weight_matrix)
-        #print("weights", weight_matrix)
+        print("weights", weight_matrix)
         activations_test = copy.copy(activations)
-        #print("activations", activations_test)
+        print("activations", activations_test)
         weight_derivative_matrix = []
         activations_test.reverse()
-        #print("activations rev", activations_test)
-           
+        errors = []
+        for i in range(len(target)):
+            errors.append(activations_test[0][i] - target[i])
+        print("activations rev", activations_test)
+        print("initial errors", errors)
+        
         return
