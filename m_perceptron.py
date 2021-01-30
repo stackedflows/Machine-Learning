@@ -78,6 +78,15 @@ class mlp:
             product.append(set_0[element] * set_1[element])
         return product
     
+    def add(self, set_0):
+        sums = []
+        for i in range(len(set_0[0])):
+            added = 0
+            for ii in range(len(set_0)):
+                added += set_0[ii][i]
+            sums.append(added)
+        return sums
+    
     #neuron activation function
     def sigmoid(self, x):
         return 1 / (1 + math.exp(-x))
@@ -94,25 +103,17 @@ class mlp:
                     weighted[iii] = weighted[iii] * running_activations[i][ii]
                 weighted_layer.append(weighted)
             dot_prod = []
-            for ii in range(len(weighted_layer) - 1):
-                dot_prod = self.dot(weighted_layer[ii], weighted_layer[ii + 1])
+            for ii in range(len(weighted_layer)):
+                dot_prod = self.add(weighted_layer)
             activations = dot_prod
             for ii in range(len(activations)):
                 #activations[ii] = self.sigmoid(activations[ii])
                 pass
             running_activations.append(activations)
-        self.activations_matrixes.append(running_activations)
-        print("forward pass activations", self.activations_matrixes)
-        return 
-    
-    #propogates all input data
-    def forward_propogate_all(self, input_training):
-        size = len(input_training)
-        for i in range(size):
-            self.forward_propogate_single(input_training[i])
-        print("forward pass activations", self.activations_matrixes)
-        return 
-    
+        #print("forward pass activations", running_activations)
+        print(running_activations)
+        return running_activations
+
     #method for caluculationg errors
     def error_calculation(self, correct_outputs, outputs):
         errors = []
@@ -125,17 +126,13 @@ class mlp:
         return x * (1 - x)
     
     #method for feeding errors backward in network
-    def back_propogate_single(self):
-        weight_matrix = self.weight_matrix
-        print("self", self.weight_matrix)
+    def back_propogate_single(self, activations):
+        weight_matrix = copy.copy(self.weight_matrix)
+        #print("weights", weight_matrix)
+        activations_test = copy.copy(activations)
+        #print("activations", activations_test)
         weight_derivative_matrix = []
-        for i in reversed(range(0, len(weight_matrix))):
-            pass
-        print("backward pass", weight_derivative_matrix)    
+        activations_test.reverse()
+        #print("activations rev", activations_test)
+           
         return
-    
-    def back_propogate_all(self, output_training):
-        size = len(output_training)
-        for i in range(size):
-            self.back_propogate(output_training[i])
-        return 
