@@ -4,14 +4,14 @@
 import random, math, copy
 
 class mlp:
-    def __init__(self, ins = 2, h_layers = [3, 2, 3], outs = 4):
+    def __init__(self, ins = 2, h_layers = [3], outs = 2):
         #constants defining the layers of the network
         self.inputs = ins
         self.hidden_layers = h_layers
         self.outputs = outs
         
         #to be constructed during the forward pass
-        self.activations_matrixes = []
+        self.activation_matrix = []
         
         #to be constructed during the backpropogation, and initialised next++
         self.weight_derivatives = []
@@ -115,15 +115,16 @@ class mlp:
             for ii in range(len(activations)):
                 activations[ii] = self.sigmoid(activations[ii])
             running_activations.append(activations)
-        return running_activations
+        self.activation_matrix = running_activations
+        return 
             
     #defining the derivative of the sigmoid        
     def ddx_sigmoid(self, x):
         return x * (1 - x)
     
     #method for feeding errors backward in network
-    def back_propogate_single(self, activations, target):
-        reverse_activations = copy.copy(activations)
+    def back_propogate_single(self, target):
+        reverse_activations = self.activation_matrix
         reverse_activations.reverse()
         reversed_weight_matrix = copy.copy(self.inverse_weight_matrix)
         errors = []
@@ -150,10 +151,10 @@ class mlp:
         return derivatives_matrix
     
     #updates weights based on back propgation single
-    def gradient_descent_single(self, learning_rate, activations, target):
+    def gradient_descent_single(self, learning_rate, target):
         #adjust weights
         weights = copy.copy(self.inverse_weight_matrix)
-        derivatives = self.back_propogate_single(activations, target)
+        derivatives = self.back_propogate_single(target)
         for i in range(len(weights)):
             for ii in range(len(weights[i])):
                 for iii in range(len(weights[i][ii])):
@@ -171,4 +172,13 @@ class mlp:
                     partition_1.append(weights[i][ii][j])
                 weights_normal.append(partition_1)
             weights_new.append(weights_normal)
-        return weights_new
+        self.weight_matrix = weights_new
+        self.weight_matrix.reverse()
+        return 
+    
+    def train(self, inputs, targets, epochs, rate):
+        for i in range(epochs):
+            for ii in range(len(inputs)):
+                self.forward_propogate_single(inputs[ii])
+                self.gradient_descent_single(rate, targets[ii])
+        return
