@@ -4,6 +4,7 @@
 import random, math, copy
 
 class mlp:
+    #ins must be integers, h_layers can be a 1 x n array of integers, out must be integers
     def __init__(self, ins = 2, h_layers = [3], outs = 2):
         #constants defining the layers of the network
         self.inputs = ins
