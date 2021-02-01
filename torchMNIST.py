@@ -1,4 +1,4 @@
-#python torchMNIST.py
+#python MNIST.py
 
 #official pytotch MNIST example
 from __future__ import print_function
@@ -33,7 +33,8 @@ class Net(nn.Module):
         x = F.relu(x)
         x = self.dropout2(x)
         x = self.fc2(x)
-        output = F.log_softmax(x, dim=1)
+        #change to softmax, from log_softmax so ONNX supports the operator
+        output = F.softmax(x, dim=1)
         return output
 
 
@@ -73,6 +74,7 @@ def test(model, device, test_loader):
         100. * correct / len(test_loader.dataset)))
 
 
+    
 def main():
     # Training settings
     parser = argparse.ArgumentParser(description='PyTorch MNIST Example')
@@ -116,9 +118,9 @@ def main():
         transforms.ToTensor(),
         transforms.Normalize((0.1307,), (0.3081,))
         ])
-    dataset1 = datasets.MNIST('../data', train=True, download=True,
+    dataset1 = datasets.MNIST('data', train=True, download=True,
                        transform=transform)
-    dataset2 = datasets.MNIST('../data', train=False,
+    dataset2 = datasets.MNIST('data', train=False,
                        transform=transform)
     train_loader = torch.utils.data.DataLoader(dataset1,**train_kwargs)
     test_loader = torch.utils.data.DataLoader(dataset2, **test_kwargs)
@@ -132,24 +134,9 @@ def main():
         test(model, device, test_loader)
         scheduler.step()
 
-    if args.save_model:
-        torch.save(model.state_dict(), "pytorch_model.pt")
+    torch.save(model.state_dict(), 'pytorch_model.pt')
 
 
 if __name__ == '__main__':
-    #train and load model
-    pytorch_model = Net()
-    pytorch_model.eval()
-    dummy_input = torch.zeros(1, 1, 28, 28)
-    
-    #recommended barracuda export settings
-    torch.onnx.export(pytorch_model,
-                        dummy_input,
-                        'MNIST.onnx',
-                        export_params = True,
-                        opset_version = 9,
-                        do_constant_folding = True,
-                        input_names = ['X'],
-                        output_names = ['Y'],
-                        verbose = True
-                     )
+    #train
+    main()
