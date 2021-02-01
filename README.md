@@ -1,6 +1,3 @@
-NOTE: Libraries used will be limited to 'random' and 'math' for all but the most trivial purposes
-
-
 # Single-Layer-Perceptron
 
 relevant files : 
@@ -36,6 +33,8 @@ In this simple example, we see that It has learned to average the inputs, since 
 This is based on a 100 epoch training session and with a learning rate of 0.5.
 
 # Convolutional-Neural-Network : MNIST with Pytorch
+
+NOTE: bulk of code here is interpreted from external sources
 
     relevent files: MNIST.py
                     Inference.py
