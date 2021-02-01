@@ -35,7 +35,7 @@ In this simple example, we see that It has learned to average the inputs, since 
 
 This is based on a 100 epoch training session and with a learning rate of 0.5.
 
-# Convolutional Neural Network : MNIST with Pytorch
+# Convolutional-Neural-Network : MNIST with Pytorch
 
     relevent files: MNIST.py
                     Inference.py
@@ -59,3 +59,5 @@ Inference .cs will communicate with the frontend unity UI and process the data s
 These are documented best here: https://github.com/MarekMarchlewicz/AI-Drawing
 
 Note: barracuda 0.7.1
+
+# Natural-Language-Processing in C#
