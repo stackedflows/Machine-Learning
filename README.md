@@ -55,3 +55,7 @@ In order to execute the MNIST model above with Unity, two C# scripts must be run
                         Inference.cs
 
 Inference .cs will communicate with the frontend unity UI and process the data so that the barracuda engine can handle inference in worker.cs.
+
+These are documented best here:
+
+https://github.com/MarekMarchlewicz/AI-Drawing
