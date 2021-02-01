@@ -37,10 +37,21 @@ This is based on a 100 epoch training session and with a learning rate of 0.5.
 
 # Convolutional Neural Network : MNIST with Pytorch
 
-    relevent files: TorchMNIST.py
+    relevent files: MNIST.py
+                    Inference.py
+                    
     
 Builing a convolutional Neural Net In order to impliment MNIST classification, and exporting it to ONNX.
 
 Line 2 to 137 documented at https://github.com/pytorch/examples/tree/master/mnist
 
 More details at this link: http://yann.lecun.com/exdb/mnist/
+
+The MNIST.py program will train a model, and after training, the Inference.py program will export it to a ONNX capable of being executed with barracuda.
+
+In order to execute the MNIST model above with Unity, two C# scripts must be run:
+
+    relevant files are: Worker.cs
+                        Inference.cs
+
+
