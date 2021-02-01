@@ -41,5 +41,3 @@ Builing a convolutional Neural Net In order to impliment MNIST classification, a
 Line 2 to 137 documented at https://github.com/pytorch/examples/tree/master/mnist
 
 More details at this link: http://yann.lecun.com/exdb/mnist/
-
-...
