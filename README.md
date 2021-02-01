@@ -60,4 +60,4 @@ These are documented best here: https://github.com/MarekMarchlewicz/AI-Drawing
 
 Note: barracuda 0.7.1
 
-# Natural-Language-Processing in C#
+# Natural-Language-Processing in C#: Bot Basics
