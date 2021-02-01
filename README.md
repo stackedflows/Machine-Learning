@@ -43,7 +43,7 @@ This is based on a 100 epoch training session and with a learning rate of 0.5.
     
 Builing a convolutional Neural Net In order to impliment MNIST classification, and exporting it to ONNX.
 
-Line 2 to 137 documented at https://github.com/pytorch/examples/tree/master/mnist
+MNIST.py documented at https://github.com/pytorch/examples/tree/master/mnist
 
 More details at this link: http://yann.lecun.com/exdb/mnist/
 
