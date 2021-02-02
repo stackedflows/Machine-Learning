@@ -32,7 +32,7 @@ In this simple example, we see that It has learned to average the inputs, since 
 
 This is based on a 100 epoch training session and with a learning rate of 0.5.
 
-# ~~ Application of ML To Unity: Various frameworks~~
+# ~~ Application of ML To Unity: Various Frameworks~~
 
 # Convolutional-Neural-Network
 
