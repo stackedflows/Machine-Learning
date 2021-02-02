@@ -65,12 +65,4 @@ These are documented best here: https://github.com/MarekMarchlewicz/AI-Drawing
 
 While unity are working on implementing GPT-3 type architectures (BERT) into their Barracuda package, here is a simple way to create a bot without such tools.
 
-Making a basic Chat Bot
-    
     relevant folder is Unity
-
-    relevant files are OSCOVA.cs
-
-The oscova framework can be explored with unity using this resource https://www.codeproject.com/Articles/5267100/Integrating-a-Chatbot-into-Unity-in-Csharp
-
-We can generalise the type of bot in use with the ORYZER platform https://oryzer.com/, which allows easy creation of dialogue structures.
