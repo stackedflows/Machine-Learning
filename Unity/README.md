@@ -1,3 +1,15 @@
+# MNIST in Unity
+
+In order to execute the MNIST model with Unity, two C# scripts must be run in unity:
+
+    relevant files are: Worker.cs
+                        Inference.cs
+
+Inference .cs will communicate with the frontend unity UI and process the data so that the barracuda engine can handle inference in worker.cs.
+
+These are documented best here: https://github.com/MarekMarchlewicz/AI-Drawing
+
+
 # Making a basic Chat Bot
     
     relevant files are OSCOVA.cs
