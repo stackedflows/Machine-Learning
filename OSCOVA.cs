@@ -45,7 +45,7 @@ public class OSCOVA : MonoBehaviour
         {
             main_bot = new OscovaBot();
 
-            //main_bot.ImportWorkspace(@"[directory for oryzer structure]");
+            main_bot.ImportWorkspace(@"D:\Natural Language Processing\argument_bot.west");
 
             OscovaBot.Logger.LogReceived += (s, o) =>
             {
