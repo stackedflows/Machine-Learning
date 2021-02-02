@@ -75,6 +75,7 @@ namespace MNISTPainter
 
                     m_results_array[i].text = $"{m_Labels[keyValuePair.Key]}: {keyValuePair.Value}";
 
+                    //here we will do UI things
                 }
             }
 
