@@ -44,7 +44,6 @@ public class OSCOVA : MonoBehaviour
                 Debug.Log($"OscovaBot : {o.Log}");
             };
 
-            main_bot.Dialogs.Add(new BotDialog());
             main_bot.Trainer.StartTraining();
 
             main_bot.MainUser.ResponseReceived += (sender, evt) =>
