@@ -65,4 +65,4 @@ Making a basic Chat Bot
 
     relevant files are OSCOVA.cs
 
-https://www.codeproject.com/Articles/5267100/Integrating-a-Chatbot-into-Unity-in-Csharp
+The oscova framework can be explored with unity using this resource https://www.codeproject.com/Articles/5267100/Integrating-a-Chatbot-into-Unity-in-Csharp
