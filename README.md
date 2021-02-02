@@ -36,8 +36,6 @@ This is based on a 100 epoch training session and with a learning rate of 0.5.
 
 # Convolutional-Neural-Network
 
-NOTE: bulk of code here is interpreted from external sources
-
     relevent files: MNIST.py
                     Inference.py
                     
