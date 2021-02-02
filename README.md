@@ -11,7 +11,7 @@ Then we execute the model in Unity
 
 # Natural-Language-Processing
 
-While unity are working on implementing GPT-3 type architectures (BERT) into their Barracuda package, here is a simple way to create a bot without such tools.
+While unity are working on implementing GPT-3 type architectures (BERT) into their Barracuda package, here is a simple way to create a bot in unity without such tools.
 
     relevant folder is Unity
     
