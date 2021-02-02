@@ -36,6 +36,8 @@ This is based on a 100 epoch training session and with a learning rate of 0.5.
 
 # Convolutional-Neural-Network
 
+    relevant folder is MNIST
+
     relevent files: MNIST.py
                     Inference.py
                     
@@ -50,6 +52,8 @@ The MNIST.py program will train a model, and after training, the Inference.py pr
 
 In order to execute the MNIST model above with Unity, two C# scripts must be run in unity:
 
+    relevant folder is Unity
+
     relevant files are: Worker.cs
                         Inference.cs
 
@@ -62,6 +66,8 @@ These are documented best here: https://github.com/MarekMarchlewicz/AI-Drawing
 While unity are working on implementing GPT-3 type architectures (BERT) into their Barracuda package, here is a simple way to create a bot without such tools.
 
 Making a basic Chat Bot
+    
+    relevant folder is Unity
 
     relevant files are OSCOVA.cs
 
