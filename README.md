@@ -59,7 +59,7 @@ Inference .cs will communicate with the frontend unity UI and process the data s
 
 These are documented best here: https://github.com/MarekMarchlewicz/AI-Drawing
 
-Note: barracuda 0.7.1
+Note: barracuda currently find this version of the MNIST model unsatisfactory.
 
 # Natural-Language-Processing in C#: Building a Bot for application
 
