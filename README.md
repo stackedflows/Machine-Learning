@@ -62,3 +62,7 @@ Note: barracuda 0.7.1
 # Natural-Language-Processing in C#: Bot Basics
 
 Making a basic Chat Bot
+
+    relevant files are OSCOVA.cs
+
+https://www.codeproject.com/Articles/5267100/Integrating-a-Chatbot-into-Unity-in-Csharp
