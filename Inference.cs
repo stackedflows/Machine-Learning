@@ -24,6 +24,11 @@ namespace MNISTPainter
         [SerializeField]
         private Text[] m_results_array;
 
+        [SerializeField]
+        private Transform[] m_results_positon_array;
+
+        public Transform point_to_max;
+
         //main algorithm 'public' objects
         private Worker m_barracuda_worker;
 
@@ -66,6 +71,9 @@ namespace MNISTPainter
 
             Dictionary<int, float> results = new Dictionary<int, float>();
 
+            float max = result[0];
+            int type = 0;
+
             for (int i = 0; i < result.Length; i++)
             {
                 results[i] = result[i];
@@ -75,8 +83,15 @@ namespace MNISTPainter
 
                     m_results_array[i].text = $"{m_Labels[keyValuePair.Key]}: {keyValuePair.Value}";
 
-                    //here we will do UI things
+                    if (keyValuePair.Value > max)
+                    {
+                        max = keyValuePair.Value;
+                        type = keyValuePair.Key;
+                    }
+
+                    point_to_max.position = m_results_positon_array[type].position + new Vector3(30f, 18f, -2f);
                 }
+              
             }
 
             m_is_busy = false;
