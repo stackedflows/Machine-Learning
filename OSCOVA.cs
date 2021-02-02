@@ -26,7 +26,7 @@ public class BotDialog : Dialog
     }
 }
 
-public class GameManager : MonoBehaviour
+public class OSCOVA : MonoBehaviour
 {
     public OscovaBot main_bot;
 
