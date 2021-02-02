@@ -35,8 +35,12 @@ This is based on a 100 epoch training session and with a learning rate of 0.5.
 # ~~ Application of ML To Unity: Various Frameworks~~
 
 # Convolutional-Neural-Network
+    
+First we export the trained MNIST model to ONNX
 
     relevant folder is MNIST
+
+Then we execute the model in Unity
 
     relevant folder is Unity
 
