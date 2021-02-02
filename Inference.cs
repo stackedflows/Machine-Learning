@@ -4,15 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using Unity.Barracuda;
 
-
 namespace MNISTPainter
 {
     public class Inference : MonoBehaviour
     {
 
+        //Developer UI handling
         [SerializeField]
         public pCanvas paint_canvas;
 
+        //Note: Inference with MNIST is buggy in unity: memory leaks seem to occur due to the structure
+        //of the neural net
         [SerializeField]
         private NNModel MNIST_model;
 
@@ -22,12 +24,15 @@ namespace MNISTPainter
         [SerializeField]
         private Text[] m_results_array;
 
+        //main algorithm 'public' objects
         private Worker m_barracuda_worker;
 
         private string[] m_Labels = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
         private bool m_is_busy = false;
 
+        //initialise observer pattern
+        //instantiate worker for our model and backend execution type
         private void Start()
         {
             paint_canvas.on_update_texture += texture_listener;
@@ -35,15 +40,18 @@ namespace MNISTPainter
             m_barracuda_worker = new Worker(MNIST_model, m_worker_type);
         }
 
+        //runs worker on mouse down
         private void texture_listener(Texture2D texture)
         {
             if (!m_is_busy)
             {
-                StartCoroutine(execute(texture));
+                StartCoroutine(ExecuteAsync(texture));
             }
         }
 
-        IEnumerator execute(Texture2D texture)
+        //concurrency: each frame updates the estimated model output by calling the Worder script
+        //updates the UI to show predictions based on worker output
+        IEnumerator ExecuteAsync(Texture2D texture)
         {
             if (m_is_busy)
             {
@@ -61,23 +69,13 @@ namespace MNISTPainter
             for (int i = 0; i < result.Length; i++)
             {
                 results[i] = result[i];
-            }
 
-            for (int i = 0; i < result.Length; i++)
-            {
-                int largest_element = -1;
-                float largest_value = -1f;
                 foreach (KeyValuePair<int, float> keyValuePair in results)
                 {
-                    if (keyValuePair.Value >= largest_value)
-                    {
-                        largest_value = keyValuePair.Value;
-                        largest_element = keyValuePair.Key;
-                    }
-                }
 
-                m_results_array[i].text = $"{m_Labels[largest_element]}: {largest_value}";
-                results.Remove(largest_element);
+                    m_results_array[i].text = $"{m_Labels[keyValuePair.Key]}: {keyValuePair.Value}";
+
+                }
             }
 
             m_is_busy = false;
