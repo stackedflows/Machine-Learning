@@ -14,6 +14,9 @@ Then we execute the model in Unity
 While unity are working on implementing GPT-3 type architectures (BERT) into their Barracuda package, here is a simple way to create a bot without such tools.
 
     relevant folder is Unity
+    
+    
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Single-Layer-Perceptron
 
