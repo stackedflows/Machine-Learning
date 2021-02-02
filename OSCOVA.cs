@@ -17,14 +17,6 @@ public enum message_type
     user, bot
 }
 
-public class BotDialog : Dialog
-{
-    [Expression("hello bot")]
-    public void hello(Context context, Result result)
-    {
-        result.SendResponse("hello hacker");
-    }
-}
 
 public class OSCOVA : MonoBehaviour
 {
