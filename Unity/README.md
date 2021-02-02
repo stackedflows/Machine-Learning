@@ -10,7 +10,7 @@ Inference .cs will communicate with the frontend unity UI and process the data s
 These are documented best here: https://github.com/MarekMarchlewicz/AI-Drawing
 
 
-# Making a basic Chat Bot
+# Chat-Bot in Unity
     
     relevant files are OSCOVA.cs
 
