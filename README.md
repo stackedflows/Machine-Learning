@@ -34,7 +34,7 @@ This is based on a 100 epoch training session and with a learning rate of 0.5.
 
 # ~~ Application of ML To Unity: Various frameworks~~
 
-# Convolutional-Neural-Network : MNIST with Pytorch
+# Convolutional-Neural-Network
 
 NOTE: bulk of code here is interpreted from external sources
 
@@ -59,7 +59,7 @@ Inference .cs will communicate with the frontend unity UI and process the data s
 
 These are documented best here: https://github.com/MarekMarchlewicz/AI-Drawing
 
-# Natural-Language-Processing in C#: Building a Bot for application
+# Natural-Language-Processing
 
 While unity are working on implementing GPT-3 type architectures (BERT) into their Barracuda package, here is a simple way to create a bot without such tools.
 
