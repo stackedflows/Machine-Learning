@@ -50,16 +50,9 @@ More details of MNIST at this link: http://yann.lecun.com/exdb/mnist/
 
 The MNIST.py program will train a model, and after training, the Inference.py program will export it to a ONNX capable of being executed with barracuda.
 
-In order to execute the MNIST model above with Unity, two C# scripts must be run in unity:
 
     relevant folder is Unity
 
-    relevant files are: Worker.cs
-                        Inference.cs
-
-Inference .cs will communicate with the frontend unity UI and process the data so that the barracuda engine can handle inference in worker.cs.
-
-These are documented best here: https://github.com/MarekMarchlewicz/AI-Drawing
 
 # Natural-Language-Processing
 
