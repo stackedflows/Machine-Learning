@@ -1,6 +1,6 @@
 # MNIST to ONNX
 
-  relevent files: MNIST.py
+    relevent files: MNIST.py
                     Inference.py
                     
     
