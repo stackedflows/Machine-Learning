@@ -1,3 +1,20 @@
+# Convolutional-Neural-Network
+    
+First we export the trained MNIST model to ONNX
+
+    relevant folder is MNIST
+
+Then we execute the model in Unity
+
+    relevant folder is Unity
+
+
+# Natural-Language-Processing
+
+While unity are working on implementing GPT-3 type architectures (BERT) into their Barracuda package, here is a simple way to create a bot without such tools.
+
+    relevant folder is Unity
+
 # Single-Layer-Perceptron
 
 relevant files : 
@@ -31,22 +48,3 @@ It is a very generalised version of the SLP previously developed, capable of con
 In this simple example, we see that It has learned to average the inputs, since the network cannot think of another way to optimise the error minimisation.
 
 This is based on a 100 epoch training session and with a learning rate of 0.5.
-
-# ~~ Application of ML To Unity: Various Frameworks~~
-
-# Convolutional-Neural-Network
-    
-First we export the trained MNIST model to ONNX
-
-    relevant folder is MNIST
-
-Then we execute the model in Unity
-
-    relevant folder is Unity
-
-
-# Natural-Language-Processing
-
-While unity are working on implementing GPT-3 type architectures (BERT) into their Barracuda package, here is a simple way to create a bot without such tools.
-
-    relevant folder is Unity
