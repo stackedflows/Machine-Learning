@@ -5,13 +5,17 @@ using Unity.Barracuda;
 
 namespace MNISTPainter
 {
+    //must implement Dispose()
     public class Worker : IDisposable
     {
+        //specifies 'public' objects
         private IWorker worker;
         private Model model;
         private float[] results;
         private PrecompiledComputeOps ops;
 
+        //initialise public objects: loads MNIST model, creates a pool of workers to do inference,
+        //initialises relevant GPU architecture
         public Worker(NNModel nnmodel, WorkerFactory.Type type)
         {
             bool verbose = false;
@@ -22,6 +26,7 @@ namespace MNISTPainter
             ops = new PrecompiledComputeOps(kernels, kernels[0]);
         }
 
+        //method for cleaning garbage, adapted for gpu 
         public void Dispose()
         {
             worker?.Dispose();
@@ -29,6 +34,9 @@ namespace MNISTPainter
             ops = null;
         }
 
+        //runs through pixels in image, converts to model executable tensor, breaks each time a new column
+        //is finished, and begins to execute prediction based on this updated information, 
+        //outputs the model prediction
         public IEnumerator ExecuteAsync(Texture2D texture)
         {
             int width = texture.width;
@@ -42,7 +50,7 @@ namespace MNISTPainter
                 {
                     input[0, 27 - y, x, 0] = texture.GetPixel(x, y).r;
                 }
-                yield return worker.ExecuteAsync(input);
+                yield return worker.StartManualSchedule(input);
             }
 
             Tensor output = worker.PeekOutput();
@@ -56,7 +64,7 @@ namespace MNISTPainter
         public IEnumerator ExecuteAsyncTexture(Texture2D texture)
         {
             Tensor input = new Tensor(texture, 1);
-            yield return worker.ExecuteAsync(input);
+            yield return worker.StartManualSchedule(input);
 
             Tensor output = worker.PeekOutput();
             results = output.data.Download(output.shape);
@@ -69,11 +77,5 @@ namespace MNISTPainter
         {
             return results;
         }
-
-        public TensorShape GetInputShape(int index)
-        {
-            return new TensorShape(model.inputs[index].shape);
-        }
     }
-
 }
