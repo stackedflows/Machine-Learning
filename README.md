@@ -54,3 +54,8 @@ It is a very generalised version of the SLP previously developed, capable of con
 In this simple example, we see that It has learned to average the inputs, since the network cannot think of another way to optimise the error minimisation.
 
 This is based on a 100 epoch training session and with a learning rate of 0.5.
+
+# Bag of Words
+
+    relevant files: bow.py
+
