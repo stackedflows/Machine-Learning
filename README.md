@@ -4,8 +4,6 @@ First we export the trained MNIST model to ONNX
 
     relevant folder is MNIST
 
-Then we execute the model in Unity
-
     relevant folder is Unity
 
 
