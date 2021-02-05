@@ -1,15 +1,9 @@
 # Convolutional-Neural-Network
-    
-First we export the trained MNIST model to ONNX
 
     relevant folder is MNIST
-
-    relevant folder is Unity
-
+                       Unity
 
 # Natural-Language-Processing
-
-While unity are working on implementing GPT-3 type architectures (BERT) into their Barracuda package, here is a simple way to create a bot in unity without such tools.
 
     relevant folder is Unity
     
