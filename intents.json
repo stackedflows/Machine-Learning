@@ -57,5 +57,17 @@
         "responses":[
             "You will have to tell me where you are first!"
         ]
-    }
+    },
+    
+        {
+        "tag": "bye",
+        "patterns":[
+            "im out",
+            "asta la vista",
+            "damn im going home"
+        ],
+        "responses":[
+            "Puny human brain! Of course you could not keep up with a mind such as my own"
+        ]
+    },
 ]
