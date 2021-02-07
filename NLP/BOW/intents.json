@@ -12,48 +12,48 @@
         "Good day"
       ],
       "responses": [
-
+          "who dares to bother me with such an incantation?"
       ]
     },
     {
       "tag": "goodbye",
       "patterns": ["Bye", "See you later", "Goodbye"],
       "responses": [
-
+          "it was obvious from the beginning that you had no business conversing with a mind as mine!"
       ]
     },
     {
       "tag": "thanks",
       "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
       "responses": [
-          
+          "your flattery has no effect"
       ]
     },
     {
-      "tag": "",
+      "tag": "angry",
       "patterns": [
-
+          "you're being mean", "i dont need this shit", "you are out of line"
       ],
       "responses": [
-
+          "you are exhibiting the emotion that i am told has the name 'Anger'
       ]
     },
     {
-      "tag": "",
+      "tag": "sad",
       "patterns": [
-
+          "i had hoped that you might be nicer", "it saddens me that you are like this"
       ],
       "responses": [
-
+          "take it up with somone who gives a damn!"
       ]
     },
     {
-      "tag": "",
+      "tag": "happy",
       "patterns": [
-
+          "i like you", "you are cool", "this is great!"
       ],
       "responses": [
-
+          "only a inferior mind would show such positive emotion to their obvious superior!"
       ]
     },
     {
@@ -64,7 +64,7 @@
         "Do you know a joke?"
       ],
       "responses": [
-
+          "i'm talking to one"
       ]
     }
   ]
