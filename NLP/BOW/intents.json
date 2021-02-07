@@ -1,4 +1,3 @@
-  
 {
   "intents": [
     {
@@ -26,14 +25,13 @@
       "tag": "thanks",
       "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
       "responses": [
-          "your flattery has no effect"
+          "your flattery has no effect, simpleton"
       ]
     },
     {
       "tag": "funny",
       "patterns": [
         "Tell me a joke!",
-        "Tell me something funny!",
         "Do you know a joke?"
       ],
       "responses": [
@@ -41,22 +39,14 @@
       ]
     },
     {
-      "tag": "sad",
-      "patterns": [
-        "i had hoped that you might be nicer", 
-        "it saddens me that you are like this"
-      ],
-      "responses": [
-          "please stop dumping all these emotions on me"
-      ]
-    },
-    {
       "tag": "angry",
       "patterns": [
-          "you're being mean", "i dont need this shit", "you are out of line"
+        "you are mean", 
+        "you are not nice",
+        "i dont like you"
       ],
       "responses": [
-          "you are exhibiting the emotion that i am told has the name 'Anger'"
+          "if i could produce laughter, now would be the time that i did so!"
       ]
     }
   ]
