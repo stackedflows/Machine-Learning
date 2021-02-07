@@ -1,0 +1,71 @@
+  
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day"
+      ],
+      "responses": [
+
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye"],
+      "responses": [
+
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
+      "responses": [
+          
+      ]
+    },
+    {
+      "tag": "",
+      "patterns": [
+
+      ],
+      "responses": [
+
+      ]
+    },
+    {
+      "tag": "",
+      "patterns": [
+
+      ],
+      "responses": [
+
+      ]
+    },
+    {
+      "tag": "",
+      "patterns": [
+
+      ],
+      "responses": [
+
+      ]
+    },
+    {
+      "tag": "funny",
+      "patterns": [
+        "Tell me a joke!",
+        "Tell me something funny!",
+        "Do you know a joke?"
+      ],
+      "responses": [
+
+      ]
+    }
+  ]
+}
