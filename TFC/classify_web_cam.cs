@@ -51,7 +51,7 @@ public class Webcam : MonoBehaviour
     }
 
  
-    void crop_and_normalize(WebCamTexture src)
+    void crop_normalize_inference(WebCamTexture src)
     {
         int x = Mathf.FloorToInt(display.transform.position.x);
         int y = Mathf.FloorToInt(display.transform.position.y);
@@ -98,7 +98,7 @@ public class Webcam : MonoBehaviour
     {
         if (brain_on)
         {
-            crop_and_normalize(tex);
+            crop_normalize_inference(tex);
 
             brain_on = false;
         }
