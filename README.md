@@ -36,13 +36,10 @@ This is based on a 100 epoch training session and with a learning rate of 0.5.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# LSTM
+
 # Convolutional-Neural-Network
 
     relevant folder is MNIST
                        Unity
-
-# Natural-Language-Processing
-
-    relevant folder is Unity
-                       NLP
     
