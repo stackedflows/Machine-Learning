@@ -1,28 +1,41 @@
 #python LSTM.py
 
-import torch.nn
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
 
-#dropout: randomly zeroes out elements of tensor input
-#LSTM: layer of LSTM cells
-#softmax: scales vecotr to [0,1]
-#ReLU: max(0, x)
-#CEL: log average difference
-from torch.nn import Dropout, LSTM, Softmax, ReLU
-from torch.nn import CrossEntropyLoss as CEL
+#training data
+data_train = [
+    ("The man ate the shoe".split(), ["DET", "NN", "V", "DET", "NN"]),
+    ("Bill wants some cake".split(), ["NN", "V", "DET", "NN"]),
+    ("Get to the Choppa".split(), ["I", "DET", "DET", "NN"])
+]
 
-import torchvision.datasets as datasets
+#start pre-processing
 
-mnist = datasets.MNIST(root = './data', train = True, download = True, transform = None)
+#index each word type in dictionary
+tag_index = {"DET": 0, "NN": 1, "V": 2, "I": 3}
+#index each word 
+index_ = {}
 
-model = torch.nn.Sequential(
-)
+for sent, tags in data_train:
+    for word in sent:
+        if word not in tags:
+            index_[word] = len(index_)
 
-#model optimiser
-import torch.optim as optim
-criterion = CEL()
+input_tensor = torch.tensor([index_[w] for w in data_train[0][0]], index_)
+#end preprocessing
 
-#optimizer = optim.SGD()
+#size of input vector
+EMBEDDING_DIM = 3
+#size of hidden state
+HIDDEN_DIM = 3
 
-for epoch in range(1):
-    
-    running_loss = 0.0
+#build model
+embedding = nn.Embedding(len(index_), EMBEDDING_DIM)
+emb = embedding(input_tensor)
+lstm = nn.LSTM(EMBEDDING_DIM, HIDDEN_DIM)
+linear = nn.Linear(HIDDEN_DIM, len(index_))
+
+
+model = F.log_softmax(model, dim = 1)
