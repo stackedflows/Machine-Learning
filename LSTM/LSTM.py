@@ -3,6 +3,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.optim as optim
 
 #training data
 data_train = [
@@ -23,19 +24,30 @@ for sent, tags in data_train:
         if word not in tags:
             index_[word] = len(index_)
 
-input_tensor = torch.tensor([index_[w] for w in data_train[0][0]], index_)
+input_tensor = torch.tensor([index_[w] for w in data_train[0][0]])
 #end preprocessing
 
-#size of input vector
-EMBEDDING_DIM = 3
-#size of hidden state
-HIDDEN_DIM = 3
-
 #build model
-embedding = nn.Embedding(len(index_), EMBEDDING_DIM)
-emb = embedding(input_tensor)
-lstm = nn.LSTM(EMBEDDING_DIM, HIDDEN_DIM)
-linear = nn.Linear(HIDDEN_DIM, len(index_))
+class LSTM(nn.Module):
+    def __init__(self, emb_dim, hidd_dim, index_size, tags_size):
+        self.hidden_dim = hidden_dim
+        self.word_embeddings = nn.Embedding(index_size, emb_dim)
+        self.lstm = nn.LSTM(emb_dim, hidd_dim)
+        self.linear = nn.Linear(hidd_dim, tags_size)
+        
+    def forward(self, sentence):
+        embs = word_embeddings(sentence)
+        lstm_out, = self.lstm(embs.view(len(sentence), 1, -1))
+        tags = self.linear(lstm_out.view(len(sentence), -1))
+        scores = F.log_softmax(tags, dim = 1)
+        return scores
 
+#size of input vector
+EMBEDDING_DIM = 6
+#size of hidden state
+HIDDEN_DIM = 6
 
-model = F.log_softmax(model, dim = 1)
+model = LSTM(EMBEDDING_DIM, HIDDEN_DIM, len(index_), len(tag_index))
+loss_function = nn.NLLLoss()
+optimizer = optim.SGD(model.parameters(), lr = 0.1)
+
