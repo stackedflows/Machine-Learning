@@ -10,11 +10,13 @@ import torch.nn
 from torch.nn import Dropout, LSTM, Softmax, ReLU
 from torch.nn import CrossEntropyLoss as CEL
 
+#test datasets
 import torchvision.datasets as datasets
-
 mnist = datasets.MNIST(root = './data', train = True, download = True, transform = None)
 
+#create model
 model = torch.nn.Sequential(
 )
 
+#train model
 model.train()
