@@ -22,3 +22,7 @@ import torch.optim as optim
 criterion = CEL()
 
 #optimizer = optim.SGD()
+
+for epoch in range(1):
+    
+    running_loss = 0.0
