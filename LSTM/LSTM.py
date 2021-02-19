@@ -46,18 +46,17 @@ class LSTM(nn.Module):
         return tag_scores
 
 #size of input vector
-EMBEDDING_DIM = 6
+EMBEDDING_DIM = 10
 #size of hidden state
-HIDDEN_DIM = 6
+HIDDEN_DIM = 10
 
 #initialise model
 model = LSTM(EMBEDDING_DIM, HIDDEN_DIM, len(sentence_index), len(tag_index))
-#initialise backward propogation functions
 loss_function = nn.NLLLoss()
 optimizer = optim.SGD(model.parameters(), lr = 0.1)
 
 #train model
-for epoch in range(200):
+for epoch in range(256):
     for sentence, tags in data_train:
         #clear gradients
         model.zero_grad()
