@@ -5,8 +5,3 @@ This is an implimentation of an LSTM cell based on http://colah.github.io/posts/
 # LSTM.py 
 
 Getting used to using ML libraries
-
-
-# transformer.py
-
-More torch drills
