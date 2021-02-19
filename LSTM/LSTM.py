@@ -1,5 +1,5 @@
-#python LSTM.py
-
+  #python LSTM.py
+import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -11,6 +11,8 @@ data_train = [
     ("Bill wants some cake".split(), ["NN", "V", "DET", "NN"]),
     ("Get to the Choppa".split(), ["I", "DET", "DET", "NN"])
 ]
+
+print("example data:", data_train[0])
 
 #start pre-processing
 #index each word type in dictionary
@@ -54,6 +56,8 @@ model = LSTM(EMBEDDING_DIM, HIDDEN_DIM, len(sentence_index), len(tag_index))
 loss_function = nn.NLLLoss()
 optimizer = optim.SGD(model.parameters(), lr = 0.1)
 
+print("pre training:", model(to_tensor(data_train[0][0], sentence_index)))
+
 #train model
 for epoch in range(256):
     for sentence, tags in data_train:
@@ -72,4 +76,14 @@ for epoch in range(256):
         optimizer.step()
         
         #observe model becomes sentient
-        print(loss)
+        #print(loss)
+
+minimums = []
+for i in model(to_tensor(data_train[0][0], sentence_index)):
+    count0 = 0
+    for ii in i:
+        if(math.floor(ii.item()) == 0 or math.ceil(ii.item()) == 0):
+            minimums.append(count0)
+        count0 = count0 + 1
+
+print("post training:", minimums, tag_index)
