@@ -22,7 +22,7 @@ This is a sequence of steps from a recent learning session of 10000 iterations b
 
 relevent files:
     
-    m_perceptron.py
+    MLP.py
 
 
 It is a very generalised version of the SLP previously developed, capable of constructing as many hidden layers as needed and training the newtork on as many inputs and target values as wanted.
