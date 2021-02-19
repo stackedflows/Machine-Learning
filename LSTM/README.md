@@ -5,7 +5,3 @@ This is an implimentation of an LSTM cell based on http://colah.github.io/posts/
 # LSTM.py 
 
 Getting used to using ML libraries
-
-# NMR.py
-
-. . . project . . .
