@@ -8,13 +8,13 @@ hidden_t_0 = []
 state_t_0 = [] #must be of len(input_t + hidden_t)
 
 #learned behaviours
-memory_matrix_throw = np.matrix() #must be of len(input_t + hidden_t)
+memory_matrix_throw = np.matrix() #must be of dimension len(input_t) x len(state_t_0)
 bias_throw = 1
-memory_matrix_gate_input = np.matrix() #must be of len(input_t + hidden_t)
+memory_matrix_gate_input = np.matrix()
 bias_gate_input = 1
-memory_matrix_state_input = np.matrix() #must be of len(input_t + hidden_t)
+memory_matrix_state_input = np.matrix() 
 bias_state_input = 1
-memory_matrix_hidden_output = np.matrix() #must be of len(input_t + hidden_t)
+memory_matrix_hidden_output = np.matrix() #must be of dimension len(state_t_0) x len(input_t)
 bias_hidden_output = 1
 
 #define useful functions
