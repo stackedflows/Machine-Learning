@@ -13,7 +13,6 @@ data_train = [
 ]
 
 #start pre-processing
-
 #index each word type in dictionary
 tag_index = {"DET": 0, "NN": 1, "V": 2, "I": 3}
 #index each word 
