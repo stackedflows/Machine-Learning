@@ -7,3 +7,5 @@ This is an implimentation of an LSTM cell based on http://colah.github.io/posts/
 # LSTM.py 
 
 Getting used to using ML libraries
+
+![2021-02-19 (4)](https://user-images.githubusercontent.com/73109076/108452608-abd19c80-7260-11eb-91fd-9ab98305b799.png)
