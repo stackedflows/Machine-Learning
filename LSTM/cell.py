@@ -3,18 +3,18 @@ import numpy as np
 from numpy import random
 
 #input vectors
-input_t = [1, 1, 1]
-hidden_t_0 = [1, 1 ,1]
-state_t_0 = [1, 2, 3, 4, 5, 6] #must be of len(input_t + hidden_t)
+input_t = []
+hidden_t_0 = []
+state_t_0 = [] #must be of len(input_t + hidden_t)
 
 #learned behaviours
-memory_matrix_throw = random.rand(6) #must be of len(input_t + hidden_t)
+memory_matrix_throw = np.matrix() #must be of len(input_t + hidden_t)
 bias_throw = 1
-memory_matrix_gate_input = random.rand(6) #must be of len(input_t + hidden_t)
+memory_matrix_gate_input = np.matrix() #must be of len(input_t + hidden_t)
 bias_gate_input = 1
-memory_matrix_state_input = random.rand(6) #must be of len(input_t + hidden_t)
+memory_matrix_state_input = np.matrix() #must be of len(input_t + hidden_t)
 bias_state_input = 1
-memory_matrix_hidden_output = random.rand(6) #must be of len(input_t + hidden_t)
+memory_matrix_hidden_output = np.matrix() #must be of len(input_t + hidden_t)
 bias_hidden_output = 1
 
 #define useful functions
