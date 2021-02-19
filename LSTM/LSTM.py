@@ -52,6 +52,7 @@ HIDDEN_DIM = 6
 
 #initialise model
 model = LSTM(EMBEDDING_DIM, HIDDEN_DIM, len(sentence_index), len(tag_index))
+#initialise backward propogation 
 loss_function = nn.NLLLoss()
 optimizer = optim.SGD(model.parameters(), lr = 0.1)
 
