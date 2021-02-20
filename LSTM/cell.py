@@ -1,49 +1,60 @@
-#python LSTM.py
+#python lstm.py
+import math
 import numpy as np
-from numpy import random
 
-#input vectors
-input_t = []
-hidden_t_0 = []
-state_t_0 = [] #must be of len(input_t + hidden_t)
+#inputs
+x_in = np.random.rand(3)
+h_in = np.random.rand(3)
+c_in = np.random.rand(3)
 
-#learned behaviours
-memory_matrix_throw = np.matrix() #must be of dimension len(input_t) x len(state_t_0)
-bias_throw = 1
-memory_matrix_gate_input = np.matrix()
-bias_gate_input = 1
-memory_matrix_state_input = np.matrix() 
-bias_state_input = 1
-memory_matrix_hidden_output = np.matrix() #must be of dimension len(state_t_0) x len(input_t)
-bias_hidden_output = 1
+#matrix dimensions
+h_dim = len(h_in)
+d_dim = len(x_in)
 
-#define useful functions
-def sigmoid(x):
-    x = np.array(x)
-    return 1 / (1 + np.exp(-x))
+#matrices
+w_f = np.random.rand(h_dim, d_dim)
+u_f = np.random.rand(h_dim, h_dim)
+b_f = 1
 
-def tanh(x):
-    x = np.array(x)
-    return (np.exp(x) - np.exp(-x))/(np.exp(x) + np.exp(-x))
+w_i = np.random.rand(h_dim, d_dim)
+u_i = np.random.rand(h_dim, h_dim)
+b_i = 1
 
-def dot(x, y):
-    return np.dot(x, y)
+w_o = np.random.rand(h_dim, d_dim)
+u_o = np.random.rand(h_dim, h_dim)
+b_o = 1
 
-#concatenate input and previous hidden layer for activation processing
-concat = hidden_t_0 + input_t
+w_c = np.random.rand(h_dim, d_dim)
+u_c = np.random.rand(h_dim, h_dim)
+b_c = 1
 
-#run through activation function to decide which information to pass forward through the rest of the cell
-throw_t = sigmoid(dot(memory_matrix_throw, concat) + bias_throw)
+#prepare hidden and current inputs for activation functions
+f = np.dot(w_f, x_in) + np.dot(u_f, h_in) + b_f
+i = np.dot(w_i, x_in) + np.dot(u_i, h_in) + b_i
+o = np.dot(w_o, x_in) + np.dot(u_o, h_in) + b_o
+_c = np.dot(w_c, x_in) + np.dot(u_c, h_in) + b_f
 
-#run through 2 activation function to decide on new cell state
-gate_input = sigmoid(dot(memory_matrix_gate_input, concat) + bias_gate_input)
-state_input = tanh(dot(memory_matrix_state_input, concat) + bias_state_input)
+#activation functions
+def sigmoid(inputs):
+    return 1/(1 + np.exp(-inputs))
 
-#output cell state for this time step
-output_state = dot(throw_t, state_t_0) + dot(gate_input, state_input)
+def tanh(inputs):
+    return (np.exp(inputs) - np.exp(-inputs)) / (np.exp(inputs) + np.exp(-inputs))
 
-#decide on hidden layer output for this time step
-output_activation = sigmoid(dot(memory_matrix_hidden_output, concat) + bias_hidden_output)
-hidden_output = dot(output_activation, tanh(output_state))
+#1st layer outputs
+f_out = sigmoid(f)
+i_out = sigmoid(i)
+o_out = sigmoid(o)
+_c_out = tanh(_c)
 
-print(hidden_output)
+#prepare 1st layer outputs for 2nd layer
+i__c = i * _c
+c_f = c_in * f
+
+#memory state output
+c_out = i__c + c_f
+
+#hidden output
+h_out = o_out * tanh(c_out)
+
+print(h_out)
