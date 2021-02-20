@@ -8,11 +8,11 @@ LSTM cell and Torch implimentation of Multi-Layer LSTM
 
 # ONNX
 
-Learning to transfer Output models from Torch to ONNX
+transfer Output models from Torch to ONNX
 
 # Transformer 
 
-. . . 
+using torch and numpy to build attention cells and their transformers
 
 # features 
 
