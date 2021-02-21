@@ -8,7 +8,7 @@ LSTM cell and Torch implimentation of Multi-Layer LSTM
 
 # ONNX
 
-transfer Output models from Torch to ONNX
+transfer trained models from Torch to ONNX
 
 # Transformer 
 
