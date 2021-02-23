@@ -13,7 +13,3 @@ Transfer trained models from Torch to ONNX
 # Transformer 
 
 Using torch and numpy to build attention cells and their transformers
-
-# features 
-
-. . . 
