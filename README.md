@@ -4,7 +4,7 @@ Perceptron and Multi-Layer Perceptron
 
 # LSTM
 
-LSTM cell and Torch implimentation of Multi-Layer LSTM
+LSTM cell
 
 # ONNX
 
